@@ -1,0 +1,58 @@
+body {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+}
+
+.screen {
+  height: 100%;
+  width: 100%;
+
+  padding: 81px 109px;
+}
+
+.screen h2 {
+  font-size: 30px;
+}
+
+.screen span {
+  font-size: 20px;
+}
+
+.screen h3 {
+  line-height: 100px;
+}
+
+.screen .log-table {
+  width: 100%;
+  max-width: 750px;
+
+  border-spacing: 0;
+}
+
+.screen .log-table thead tr {
+  background-color: #c4c4c4;
+  height: 3.5rem;
+}
+
+.screen .log-table thead th {
+  border-spacing: 0;
+}
+
+.screen .log-table tbody tr {
+  height: 3rem;
+}
+
+.screen .log-table tbody tr td {
+  text-align: center;
+  border: 1px solid #fff;
+  border-bottom-color: #c4c4c4;
+}
+
+.screen .log-table {
+  border: 1px solid #c4c4c4;
+
+  overflow: hidden;
+  border-radius: 12px;
+}
