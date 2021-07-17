@@ -1,0 +1,125 @@
+.sidebar {
+  height: 100vh;
+  min-width: 150px;
+
+  background: linear-gradient(180deg, #38ef7d 0%, #11998e 100%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+}
+
+.sidebar .title {
+  font-size: 22px;
+  font-weight: 800;
+
+  margin-top: 68px;
+
+  color: #fff;
+}
+
+.sidebar .bx {
+  font-size: 36px;
+
+  position: relative;
+
+  opacity: 0.7;
+
+  transition: 0.3s;
+}
+
+.sidebar .bx:hover {
+  opacity: 1;
+}
+
+.sidebar .bx.active {
+  opacity: 1;
+}
+
+.sidebar .selected {
+  height: 40px;
+  width: 4px;
+
+  background-color: #fff;
+
+  position: absolute;
+}
+
+.sidebar.dashboard .selected {
+  left: 0;
+  top: 0;
+}
+
+.sidebar.insert .selected {
+  left: 0;
+  top: 37%;
+}
+
+.sidebar.edit .selected {
+  left: 0;
+  top: 76%;
+}
+
+.sidebar .nav-container {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar .nav-container .nav-button {
+  list-style: none;
+
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  row-gap: 24px;
+}
+
+.sidebar .nav-container .nav-button li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+
+  font-size: 36px;
+}
+
+.sidebar .nav-container .nav-button li i {
+  color: #fff;
+  cursor: pointer;
+}
+
+.sidebar .nav-container .nav-button li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar .logout {
+  color: #fff;
+  font-weight: 600;
+
+  font-size: 20px;
+  margin-bottom: 68px;
+
+  cursor: pointer;
+}
+
+.sidebar .logout a {
+  color: #fff;
+  text-decoration: none;
+}
