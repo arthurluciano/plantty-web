@@ -7,7 +7,7 @@ body {
 
 .screen {
   height: 100%;
-  width: 100%;
+  width: calc(100vw - 150px);
 
   padding: 81px 109px;
 }
