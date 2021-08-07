@@ -4,10 +4,9 @@ import { useRef } from "react";
 
 type SearchInputProps = {
   name: string;
-  onClick?: () => void;
 };
 
-export function SearchInput({name}: any) {
+export function SearchInput({name}: SearchInputProps) {
   const inputRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
 
@@ -21,8 +20,8 @@ export function SearchInput({name}: any) {
 
   return (
     <div className="search-input">
-      <input ref={inputRef} type="text" name="search" id="search" />
-      <button className="search-icon">
+      <input ref={inputRef} type="text" name="search" id="search" defaultValue={defaultValue}/>
+      <button className="search-icon" type="submit">
         <i className="bx bx-search"></i>
       </button>
     </div>
