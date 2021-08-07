@@ -28,7 +28,7 @@ export function FileInput({ name }: FileInputProps) {
   useEffect(() => {
     registerField({
       name: fieldName,
-      ref: inputRef.current,
+    ref: inputRef.current,
       path: "files[0]",
     });
   }, [fieldName, registerField]);

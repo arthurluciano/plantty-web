@@ -23,7 +23,7 @@ export function Select({ title, name }: SelectProps) {
       <label htmlFor={name}>{title}</label>
       <select ref={inputRef}
         className={`formInput${error ? " error" : ""}`}
-        defaultValue={defaultValue}
+        value={defaultValue}
       >
         <option value="">Selecione *</option>
         <option value="male">Masculino</option>
