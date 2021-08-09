@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import editIcon from '../assets/images/edit.svg'
+import editIcon from '../../../../assets/images/edit.svg'
 
 type PlantCardProps = {
   id: string;

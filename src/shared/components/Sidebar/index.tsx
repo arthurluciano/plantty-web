@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../styles/sidebar.css";
+import "./styles.css";
 
 type SidebarProps = {
   page: string;

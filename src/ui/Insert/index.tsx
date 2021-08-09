@@ -1,25 +1,20 @@
-import { Sidebar } from "../components/Sidebar";
+import { Sidebar } from "../../shared/components/Sidebar";
 import { Form } from "@unform/web";
 
-import "../styles/insert.css";
-import "../styles/admin-pages.css";
-import { Input } from "../components/Form/Input";
+import "./styles.css";
+import "../../shared/styles/admin-pages.css";
+import { Input } from "../../shared/components/Form/Input";
 import { useRef } from "react";
-import { Select } from "../components/Form/Select";
-import { TextArea } from "../components/Form/TextArea";
-import validation from "../validations/InsertFormValidation";
+import { Select } from "../../shared/components/Form/Select";
+import { TextArea } from "../../shared/components/Form/TextArea";
+import validation from "../../shared/validations/Form/InsertFormValidation";
 import * as yup from "yup";
 import { FormHandles } from "@unform/core";
-import { FileInput } from "../components/Form/FileInput";
+import { FileInput } from "../../shared/components/Form/FileInput";
 
 import axios from "axios";
-import fetcher from '../api/fetcher';
-import { useEffect } from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
 
 type DataType = {
-  id?: string;
   popularName: string;
   scientificName: string;
   ambience: string;
@@ -30,20 +25,8 @@ type DataType = {
   plantImage: File;
 };
 
-export function Edit() {
+export function Insert() {
   const formRef = useRef<FormHandles>(null);
-  const [initialData, setInitialData] = useState<DataType>();
-  const { id }: any = useParams();
-
-  useEffect(() => {
-    async function fetchPlantData() {
-      const response = await fetcher.get(`/plants/${id}`);
-
-      setInitialData(response.data);
-    }
-    
-    fetchPlantData();
-  }, [id]);
 
   const handleSubmit = async (data: DataType, { reset }: any) => {
     try {
@@ -79,12 +62,12 @@ export function Edit() {
 
   return (
     <div className="plant-page">
-      <Sidebar page="edit" />
+      <Sidebar page="insert" />
       <div className="screen">
         <h2>Olá, administrador</h2>
-        <span>Você está editando {initialData && initialData.popularName}</span>
+        <span>Você está na tela de inserção de plantas.</span>
 
-        <Form ref={formRef} onSubmit={handleSubmit} id="insertForm" initialData={initialData}>
+        <Form ref={formRef} onSubmit={handleSubmit} id="insertForm">
           <div className="form-inputs">
             <div className="input-fields">
               <Input name="popularName" title="Nome popular" />
@@ -96,7 +79,7 @@ export function Edit() {
             </div>
             <TextArea name="description" title="Descrição" />
             <div className="buttons">
-              <input type="submit" form="insertForm" value="Atualizar" />
+              <input type="submit" form="insertForm" value="Inserir" />
               <input type="button" value="Preview" />
             </div>
           </div>

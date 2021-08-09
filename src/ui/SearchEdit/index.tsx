@@ -1,13 +1,13 @@
-import { Sidebar } from "../components/Sidebar";
-import "../styles/edit.css";
-import "../styles/admin-pages.css";
+import { Sidebar } from "../../shared/components/Sidebar";
+import "./styles.css";
+import "../../shared/styles/admin-pages.css";
 import { Form } from "@unform/web";
 import { useRef } from "react";
 import { FormHandles } from "@unform/core";
-import { SearchInput } from "../components/SearchInput";
+import { SearchInput } from "./components/SearchInput";
 import { useState } from "react";
-import fetcher from "../api/fetcher";
-import { PlantCard } from "../components/PlantCard";
+import fetcher from "../../services/axios/fetcher";
+import { PlantCard } from "./components/PlantCard";
 
 export function SearchEdit() {
   const formRef = useRef<FormHandles>(null);

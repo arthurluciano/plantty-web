@@ -1,0 +1,208 @@
+body {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+}
+
+.screen {
+  height: 100vh;
+  width: calc(100vw - 150px);
+
+  padding: 81px 109px;
+}
+
+.screen h2 {
+  font-size: 30px;
+}
+
+.screen span {
+  font-size: 20px;
+}
+
+.screen form {
+  margin-top: 66px;
+
+  height: 80%;
+  width: 100%;
+
+  display: flex;
+}
+
+.screen form .form-inputs {
+  height: 100%;
+  width: 100%;
+  max-width: 761px;
+}
+
+.screen form .form-inputs .input-fields {
+  display: grid;
+  grid-template-columns: calc(100% / 2.2) calc(100% / 2.2);
+
+  grid-row-gap: 45px;
+
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.screen form .form-inputs .input-fields .input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.screen form .form-inputs .input-fields .input-field input,
+.screen form .form-inputs .input-fields .input-field select {
+  margin-top: 8px;
+  height: 40px;
+  width: 100%;
+
+  outline: none;
+
+  padding: 0 12px;
+
+  border: 1px solid;
+  border-color: #fff !important;
+  border-bottom-color: #c4c4c4 !important;
+}
+
+.screen form .form-inputs .input-fields .input-field input:focus-within,
+.screen form .form-inputs .input-fields .input-field select:focus-within {
+  border-bottom-color: #4c35e4 !important;
+}
+
+.screen form .form-inputs .input-fields .input-field input,
+.screen form .form-inputs .input-fields .input-field select,
+.screen form .form-inputs .textarea-field textarea {
+  border: 2px solid #c4c4c4;
+}
+
+.screen form .form-inputs .textarea-field textarea:focus-within {
+  border-color: #4c35e4 !important;
+}
+
+.screen form .form-inputs .textarea-field {
+  margin-top: 65px;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 200px;
+  width: 100%;
+}
+
+.screen form .form-inputs .textarea-field textarea {
+  margin-top: 12px;
+
+  resize: none;
+
+  padding: 20px 20px;
+
+  outline: none;
+
+  height: 92%;
+  width: 100%;
+}
+
+.screen form .form-inputs .input-fields .input-field label,
+.screen form .form-inputs .textarea-field label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.screen form .form-inputs .input-fields .input-field .formInput.error {
+  border-bottom-color: #f15353 !important;
+}
+
+.screen form .form-inputs .textarea-field .formInput.error {
+  border-color: #f15353 !important;
+}
+
+.screen form .form-inputs .buttons {
+  margin-top: 35px;
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.screen form .form-inputs .buttons input {
+  height: 46px;
+
+  border: none;
+  border-radius: 30px;
+
+  background-color: #4c35e4;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color: #fff;
+
+  cursor: pointer;
+}
+
+.screen form .form-inputs .buttons input[type="submit"] {
+  width: 40%;
+}
+
+.screen form .form-inputs .buttons input[type="button"] {
+  width: 25%;
+}
+
+.screen form .image-field {
+  height: 100%;
+  width: 30%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  row-gap: 43px;
+
+  margin-left: 77px;
+}
+
+.screen form .image-field h2,
+.screen form .image-field span {
+  max-width: 320px;
+  text-align: center;
+}
+
+.screen form .image-field span {
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.screen form .image-field .image-previewer {
+  height: 265px;
+  width: 265px;
+
+  background-color: #c4c4c4;
+  background-image: url("../../assets/images/camera.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition: background 0.5s;
+}
+
+.screen form .image-field .image-previewer #image-preview {
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.screen form .image-field .image-previewer:hover {
+  background-color: #a1a1a1;
+}

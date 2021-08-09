@@ -1,10 +1,10 @@
-import { Sidebar } from "../components/Sidebar";
-import "../styles/dashboard.css";
-import "../styles/admin-pages.css";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import fetcher from "../api/fetcher";
+import { Sidebar } from "../../shared/components/Sidebar/";
+import fetcher from "../../services/axios/fetcher";
+
+import "./styles.css";
+import "../../shared/styles/admin-pages.css";
 
 type LogsType = {
   id: string;
