@@ -1,0 +1,162 @@
+
+/* Main */
+#login-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #cbffdf;
+}
+
+/* Login */
+#login-page .login {
+    background:white;
+    width: 35%;
+    height: 85%;
+    border-radius:30px 0 0 30px;
+    padding-left: 105px;
+}
+
+#login-page .plant-image {
+    margin-top: 80px;
+    width: 35px;
+}
+
+#login-page .title {
+    margin-top: 60px;
+    width: 300px;
+}
+
+#login-page .login h2 {
+    font-size: 28px;
+}
+
+#login-page .welcome-text {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Form */
+#login-page #form {
+    margin-top: 60px;
+    width: 80%;
+}
+
+#login-page #form input {
+    width: 100%;
+    border: 0.5px solid #C4C4C4;
+    border-radius: 30px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    outline: none;
+}
+
+#login-page #form input:focus {
+    border-color: #4C35E4;
+}
+
+#login-page #form label {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+#login-page #form label::after {
+    content: " *";
+    color: #e30000;
+}
+
+#login-page .input-group {
+    margin-top: 40px;
+}
+
+#login-page .input-group.actions button {
+    width: 100%;
+    height: 45px;
+    border-radius: 30px;
+    border: none;
+    background: #4C35E4;
+    color: white;
+
+    cursor: pointer;
+}
+
+/* Account */
+#login-page .account {
+    width: 230px;
+    margin-top: 40px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#login-page .account .create-account {
+    text-decoration: none;
+    color: #4C35E4;
+}
+
+/* Informations */
+#login-page .informations {
+    background: linear-gradient(180deg, #38EF7D 0%, #11998E 100%);
+    width: 35%;
+    height: 85%;
+    border-radius:0px 30px 30px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Images */
+#login-page .card-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 40px;
+    width: 100%;
+    height: 60%;
+}
+
+#login-page .pin-image {
+    position: absolute;
+    right: 160px;
+    top: 0;
+    width: 18%;
+}
+
+#login-page .sun-image {
+    position: absolute;
+    left: 150px;
+    top: 120px;
+    width: 18%;
+}
+
+#login-page .cultivate-image {
+    position: absolute;
+    right: 100px;
+    top: 200px;
+    width: 35%;
+}
+
+/* Text */
+#login-page .cultivate-message {
+    color: white;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#login-page .cultivate-message h2 {
+    text-align: center;
+    font-size: 28px;
+    line-height: 34px;
+}
+
+#login-page .cultivate-message small {
+    margin-top: 8px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+}
