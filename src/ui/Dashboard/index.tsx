@@ -3,25 +3,23 @@ import { useState, useEffect } from "react";
 import { Sidebar } from "../../shared/components/Sidebar/";
 import fetcher from "../../services/axios/fetcher";
 
+import { LogRepository } from "src/repositories/list/LogRepository";
+import { LogModel } from "src/models/LogModel/Log";
+
 import "./styles.css";
 import "../../shared/styles/admin-pages.css";
 
-type LogsType = {
-  id: string;
-  plant: string;
-  admin: string;
-  editType: string;
-  editDate: Date;
-};
 
 export function Dashboard() {
-  const [logs, setLogs] = useState<Array<LogsType>>([]);
+  const [logs, setLogs] = useState<Array<LogModel>>([]);
 
   useEffect(() => {
     async function fetchLogs() {
-      const response = await fetcher.get("/logs");
-      console.log(response.data);
-      setLogs(response.data);
+      const repo = new LogRepository();
+
+      const data = await repo.listAll();
+
+      setLogs(data);
     }
     fetchLogs();
   }, []);
