@@ -16,7 +16,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/insert" component={Insert} />
-        <Route path="/edit" component={SearchEdit} />
+        <Route path="/edit" exact component={SearchEdit} />
         <Route path="/edit/:id" component={Edit} />
       </Switch>
     </BrowserRouter>
