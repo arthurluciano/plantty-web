@@ -6,20 +6,23 @@ import { Edit } from "./ui/Edit";
 import { Login } from "./ui/Login";
 import { Register } from "./ui/Register";
 import { LandingPage } from "./ui/LandingPage";
+import { LogContextProvider } from "./shared/hooks/useLogs/context/LogContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/insert" component={Insert} />
-        <Route path="/edit" exact component={SearchEdit} />
-        <Route path="/edit/:id" component={Edit} />
-      </Switch>
-    </BrowserRouter>
+    <LogContextProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/insert" component={Insert} />
+          <Route path="/edit" exact component={SearchEdit} />
+          <Route path="/edit/:id" component={Edit} />
+        </Switch>
+      </BrowserRouter>
+    </LogContextProvider>
   );
 }
 
