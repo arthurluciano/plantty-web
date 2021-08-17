@@ -8,21 +8,10 @@ import { LogModel } from "src/models/LogModel/Log";
 
 import "./styles.css";
 import "../../shared/styles/admin-pages.css";
-
+import { useLogs } from "src/shared/hooks/useLogs";
 
 export function Dashboard() {
-  const [logs, setLogs] = useState<Array<LogModel>>([]);
-
-  useEffect(() => {
-    async function fetchLogs() {
-      const repo = new LogRepository();
-
-      const data = await repo.listAll();
-
-      setLogs(data);
-    }
-    fetchLogs();
-  }, []);
+  const { logs } = useLogs();
 
   return (
     <div className="plant-page">
