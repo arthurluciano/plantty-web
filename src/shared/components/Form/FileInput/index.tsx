@@ -37,7 +37,7 @@ export function FileInput({ name }: FileInputProps) {
     <div className="image-field">
       <h2>Imagem da planta</h2>
       <div className="image-previewer" onClick={() => handleOpenFileSelector()}>
-        <img src={preview} alt="" id="image-preview" />
+        <img src={defaultValue} alt="" id="image-preview" />
         <input
           ref={inputRef}
           type="file"
