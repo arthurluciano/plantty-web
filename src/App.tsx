@@ -1,28 +1,20 @@
-import { Dashboard } from "./ui/Dashboard";
-import { Insert } from "./ui/Insert";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
-import { SearchEdit } from "./ui/SearchEdit";
-import { Edit } from "./ui/Edit";
-import { Login } from "./ui/Login";
-import { Register } from "./ui/Register";
-import { LandingPage } from "./ui/LandingPage";
-import { LogContextProvider } from "./shared/hooks/useLogs/context/LogContext";
+import { Router } from "react-router";
+import { Routes } from "./shared/components/Routes";
+import { AuthenticationContextProvider } from "src/shared/hooks/useAuthentication/context/AuthenticationContext";
+import { LogContextProvider } from "src/shared/hooks/useLogs/context/LogContext";
+import history from "./shared/history";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <LogContextProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={LandingPage} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/insert" component={Insert} />
-          <Route path="/edit" exact component={SearchEdit} />
-          <Route path="/edit/:id" component={Edit} />
-        </Switch>
-      </BrowserRouter>
-    </LogContextProvider>
+    <AuthenticationContextProvider>
+      <LogContextProvider>
+        <Router history={history}>
+          <Routes />
+        </Router>
+        <Toaster toastOptions={{ style: {fontFamily: 'Montserrat, sans-serif'} }} />
+      </LogContextProvider>
+    </AuthenticationContextProvider>
   );
 }
 
