@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useAuthentication } from "src/shared/hooks/useAuthentication";
 import "./styles.css";
 
 type SidebarProps = {
@@ -6,6 +7,8 @@ type SidebarProps = {
 };
 
 export function Sidebar({ page }: SidebarProps) {
+  const { handleLogOut } = useAuthentication();
+
   return (
     <nav className={`sidebar ${page}`}>
       <span className="title">Plantty</span>
@@ -22,7 +25,9 @@ export function Sidebar({ page }: SidebarProps) {
           </li>
           <li>
             <Link to="/insert">
-              <i className={`bx bx-plus ${page === "insert" ? "active" : ""}`}></i>
+              <i
+                className={`bx bx-plus ${page === "insert" ? "active" : ""}`}
+              ></i>
             </Link>
           </li>
           <li>
@@ -36,7 +41,7 @@ export function Sidebar({ page }: SidebarProps) {
         <div className="selected"></div>
       </div>
       <span className="logout">
-        <a href="/login">Sair</a>
+        <button onClick={async () => await handleLogOut()}>Sair</button>
       </span>
     </nav>
   );

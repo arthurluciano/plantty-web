@@ -42,8 +42,8 @@ body {
   height: 100%;
   width: 100%;
 
-  border: 1px solid #c4c4c4;
-  border-radius: 30px;
+  background: #EFEFEF;
+  border-radius: 10px;
 
   overflow: hidden;
 
@@ -62,6 +62,8 @@ body {
 
   border: none;
 
+  background: transparent;
+
   padding: 0 22px;
 }
 
@@ -70,13 +72,13 @@ body {
   width: 50px;
 
   border: none;
-  background-color: #4c35e4;
+  background-color: #4C35E4;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 50%;
+  border-radius: 10px;
 
   color: #fff;
 
@@ -89,6 +91,27 @@ body {
   margin-top: 80px;
 
   max-width: 500px;
+  height: 500px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+
+  overflow-y: auto;
+
+  row-gap: 20px;
+}
+
+.screen .search-field .searched-plants::-webkit-scrollbar {
+  background: #c4c4c4;
+  width: 10px;
+
+  border-radius: 10px; 
+}
+
+.screen .search-field .searched-plants::-webkit-scrollbar-thumb {
+  background: #4C35E4;
+  border-radius: 10px;
 }
 
 .screen .search-field .searched-plants > span {
@@ -105,19 +128,33 @@ body {
   align-items: center;
   justify-content: space-between;
 
-  height: 90px;
+  min-height: 90px;
   max-width: 404px;
 
-  background: #00d27a;
+  background: linear-gradient(to bottom, transparent, #000000 100%);
 
-  border-radius: 40px;
+  border-radius: 20px;
 
-  padding: 0 36px;
+  position: relative;
+}
+
+.screen .search-field .searched-plants .searched-plant > img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+
+  object-fit: cover;
+
+  border-radius: 20px;
+
+  z-index: -2;
 }
 
 .screen .search-field .searched-plants .searched-plant .plant-info {
   display: flex;
   flex-direction: column;
+
+  margin-left: 36px;
 }
 
 .screen .search-field .searched-plants .searched-plant .plant-info strong {
@@ -133,9 +170,26 @@ body {
   font-size: 16px;
 }
 
-.screen .search-field .searched-plants .searched-plant > button {
+.screen .search-field .searched-plants .searched-plant .buttons {
+  margin-right: 36px;
+
+  display: flex;
+  align-items: center;
+
+  column-gap: 8px;
+}
+
+.screen .search-field .searched-plants .searched-plant .buttons > button {
   border: none;
   background: none;
 
   cursor: pointer;
+}
+
+.screen .search-field .searched-plants .searched-plant .buttons .delete-button svg path{
+  transition: 0.2s fill;
+}
+
+.screen .search-field .searched-plants .searched-plant .buttons .delete-button:hover svg path {
+  fill: #EA3535;
 }

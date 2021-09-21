@@ -4,8 +4,29 @@ import Sun from "../../assets/images/AuthPages/sun.svg";
 import cultivatePlant from "../../assets/images/AuthPages/cultivate-plant.svg";
 
 import "./styles.css";
+import { Form } from "@unform/web";
+import { Input } from "./components/Input";
+import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { FormHandles } from "@unform/core";
+import { useAuthentication } from "src/shared/hooks/useAuthentication";
+
+import toast from "react-hot-toast";
 
 export function Login() {
+
+  const formRef = useRef<FormHandles>(null);
+
+  const { handleLogin } = useAuthentication();
+
+  async function handleSubmit(data: any) {
+    toast.promise(handleLogin(data), {
+      loading: 'Carregando...',
+      success: 'Login feito com sucesso',
+      error: 'Ocorreu um erro interno',
+    });
+  }
+
   return (
     <main id="login-page">
       <section className="login">
@@ -21,38 +42,30 @@ export function Login() {
         </div>
 
         <div id="form">
-          <form name="form" action="/login" method="post">
-            <div className="input-group">
-              <label htmlFor="user">Usuário</label>
-              <input
-                type="text"
-                name="user"
-                id="user"
-                placeholder="Nome de usuário"
-              />
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="password">Senha</label>
-              <input
-                type="text"
-                name="password"
-                id="password"
-                placeholder="Min. 8 caractéres"
-              />
-            </div>
-
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <Input
+              title="Usuário"
+              type="text"
+              name="username"
+              placeholder="Nome de usuário"
+            />
+            <Input
+              title="Senha"
+              type="password"
+              name="password"
+              placeholder="Min. 8 caractéres"
+            />
             <div className="input-group actions">
               <button type="submit">Login</button>
             </div>
-          </form>
+          </Form>
         </div>
 
         <div className="account">
           <span>Sua conta ainda não foi criada?</span>
-          <a href="/register" className="create-account">
+          <Link to="/register" className="create-account">
             Crie uma conta
-          </a>
+          </Link>
         </div>
       </section>
 

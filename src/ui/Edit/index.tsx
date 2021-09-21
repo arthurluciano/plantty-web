@@ -7,18 +7,21 @@ import { FormHandles } from "@unform/core";
 
 import * as yup from "yup";
 import axios from "axios";
-import fetcher from '../../services/axios/fetcher';
+import fetcher from '../../services/axios/api';
 
 import { Sidebar } from "../../shared/components/Sidebar";
 import { Input } from "../../shared/components/Form/Input";
 import { Select } from "../../shared/components/Form/Select";
 import { TextArea } from "../../shared/components/Form/TextArea";
 import { FileInput } from "../../shared/components/Form/FileInput";
+import history from "../../shared/history";
 
 import validation from "../../shared/validations/Form/InsertFormValidation";
 
 import "./styles.css";
 import "../../shared/styles/admin-pages.css";
+import { useAuthentication } from "src/shared/hooks/useAuthentication";
+import toast from "react-hot-toast";
 
 
 type DataType = {
@@ -38,6 +41,8 @@ export function Edit() {
   const [initialData, setInitialData] = useState<DataType>();
   const { id }: any = useParams();
 
+  const { user } = useAuthentication();
+
   useEffect(() => {
     async function fetchPlantData() {
       const response = await fetcher.get(`/plants/${id}`);
@@ -56,16 +61,25 @@ export function Edit() {
 
       const formData = new FormData();
 
-      formData.append("file", data.plantImage);
-      formData.append("upload_preset", "dud7id0c");
+      Object.entries(data).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
 
-      const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dtarkqzrh/image/upload",
-        formData
-      );
-      console.log(response.data);
+      toast.remove();
 
-      reset();
+      toast.loading(`Enviando informações ao servidor...`)
+
+      await fetcher.patch(`/plants/${id}/`, formData, {
+        headers: {
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+
+      toast.remove();
+
+      toast.success(`Planta '${data.popularName}' atualizada com sucesso!`);
+
+      history.push("/edit");
     } catch (error) {
       if (!(error instanceof yup.ValidationError)) return;
       const validationErrors = {} as any;
@@ -84,10 +98,10 @@ export function Edit() {
     <div className="plant-page">
       <Sidebar page="edit" />
       <div className="screen">
-        <h2>Olá, administrador</h2>
+        <h2>Olá, {user?.username}</h2>
         <span>Você está editando {initialData && initialData.popularName}</span>
 
-        <Form ref={formRef} onSubmit={handleSubmit} id="insertForm" initialData={initialData}>
+        <Form ref={formRef} onSubmit={handleSubmit} id="insertForm" encType='multipart/form-data' initialData={initialData}>
           <div className="form-inputs">
             <div className="input-fields">
               <Input name="popularName" title="Nome popular" />

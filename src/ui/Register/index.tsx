@@ -4,8 +4,28 @@ import Sun from "../../assets/images/AuthPages/sun.svg";
 import cultivatePlant from "../../assets/images/AuthPages/cultivate-plant.svg";
 
 import "./styles.css";
+import { Form } from "@unform/web";
+import { Input } from "./components/Input";
+import { RegisterCodeInput } from "./components/RegisterCodeInput";
+import { Link } from "react-router-dom";
+import { FormHandles } from "@unform/core";
+import { useRef } from "react";
+import toast from "react-hot-toast";
+import { useAuthentication } from "src/shared/hooks/useAuthentication";
 
 export function Register() {
+  const formRef = useRef<FormHandles>(null);
+
+  const { handleRegister } = useAuthentication();
+
+  function handleSubmit(data: any) {
+    toast.promise(handleRegister(data), {
+      loading: 'Carregando...',
+      success: 'Registro feito com sucesso',
+      error: 'Ocorreu um erro interno',
+    });
+  }
+
   return (
     <main id="register-page">
       <section className="login">
@@ -21,58 +41,39 @@ export function Register() {
         </div>
 
         <div id="form">
-          <form name="form" action="/register" method="post">
-            <div className="input-group">
-              <label htmlFor="user">Usuário</label>
-              <input
-                type="text"
-                name="user"
-                id="user"
-                placeholder="Nome de usuário"
-              />
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="password">Senha</label>
-              <input
-                type="text"
-                name="password"
-                id="password"
-                placeholder="Min. 8 caractéres"
-              />
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="confirm">Senha novamente</label>
-              <input
-                type="text"
-                name="confirm"
-                id="confirm"
-                placeholder="Min. 8 caractéres"
-              />
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="user">Código de registro</label>
-
-              <div className="register">
-                <input
-                  type="text"
-                  name="register-code"
-                  id="register-code"
-                  placeholder="Código"
-                />
-                <button type="submit">Registrar</button>
-              </div>
-            </div>
-          </form>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <Input
+              title="Usuário"
+              type="text"
+              name="username"
+              placeholder="Nome de usuário"
+            />
+            <Input
+              title="Senha"
+              type="password"
+              name="password"
+              placeholder="Min. 8 caractéres"
+            />
+            <Input
+              title="Senha novamente"
+              type="password"
+              name="confirm"
+              placeholder="Min. 8 caractéres"
+            />
+            <RegisterCodeInput
+              title="Código de registro"
+              type="text"
+              name="registerCode"
+              placeholder="Código"
+            />
+          </Form>
         </div>
 
         <div className="account">
           <span>Já possui conta?</span>
-          <a href="/login" className="create-account">
+          <Link to="/login" className="create-account">
             Entrar
-          </a>
+          </Link>
         </div>
       </section>
 

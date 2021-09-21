@@ -40,6 +40,8 @@ body {
     background: radial-gradient(59.3% 59.3% at 54.07% 40.7%, rgba(0, 242, 39, 0.15) 0%, rgba(196, 196, 196, 0) 100%);
     transform: matrix(1, -0.05, 0.05, 1, 0, 0);
     position: absolute;
+
+    z-index: -1;
 }
 
 .logo {
@@ -304,6 +306,13 @@ footer {
 
 .contact-image img {
     width: 80%;
+}
+
+.social-images {
+    display: flex;
+    align-items: center;
+
+    column-gap: 12px;
 }
 
 .about-us h1 {

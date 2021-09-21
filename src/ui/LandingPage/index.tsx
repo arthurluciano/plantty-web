@@ -35,9 +35,9 @@ export function LandingPage() {
           </div>
 
           <div className="links">
-            <a href="#">Início</a>
-            <a href="#">Sobre</a>
-            <a href="#">Contato</a>
+            <a href="#introduction">Início</a>
+            <a href="#informations">Sobre</a>
+            <a href="#contact-us">Contato</a>
           </div>
 
           <button className="download-button header">Baixe Agora</button>
@@ -53,7 +53,7 @@ export function LandingPage() {
         </div>
       </header>
       <main className="animation">
-        <section className="introduction">
+        <section className="introduction" id="introduction">
           <div className="introduction-text">
             <h1>Nós adoramos proteger o nosso planeta</h1>
             <p>
@@ -112,7 +112,7 @@ export function LandingPage() {
             <img src={app} alt="Aplicativo" />
           </div>
 
-          <div className="informations">
+          <div className="informations" id="informations">
             <h1>Informações de uma forma simplificada</h1>
             <p>
               Você verá as informações das plantas de forma simples e completa.
@@ -159,12 +159,12 @@ export function LandingPage() {
             <div className="social-networks">
               <h1>Redes Sociais</h1>
               <div className="social-images">
-                <img src={instagram} alt="Instagram" />
-                <img src={twitter} alt="Twitter" />
-                <img src={facebook} alt="Facebook" />
+                <a href=""><img src={instagram} alt="Instagram" /></a>
+                <a href=""><img src={twitter} alt="Twitter" /></a>
+                <a href=""><img src={facebook} alt="Facebook" /></a>            
               </div>
             </div>
-            <div className="contact-us">
+            <div className="contact-us" id="contact-us">
               <h1>Fale Conosco</h1>
               <p>
                 <img src={email} alt="Email" />

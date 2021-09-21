@@ -109,17 +109,16 @@
   text-decoration: none;
 }
 
-.sidebar .logout {
-  color: #fff;
-  font-weight: 600;
-
-  font-size: 20px;
-  margin-bottom: 68px;
-
-  cursor: pointer;
-}
-
-.sidebar .logout a {
+.sidebar .logout button {
   color: #fff;
   text-decoration: none;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 68px;
 }

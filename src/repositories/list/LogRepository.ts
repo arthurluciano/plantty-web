@@ -1,7 +1,7 @@
 import { LogModel } from "src/models/LogModel/Log";
 import { IRepository } from "../RepositoryInterface";
 
-import fetcher from '../../services/axios/fetcher';
+import fetcher from '../../services/axios/api';
 
 export class LogRepository implements IRepository<LogModel> {
 

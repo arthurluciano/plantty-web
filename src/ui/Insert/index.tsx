@@ -12,7 +12,11 @@ import * as yup from "yup";
 import { FormHandles } from "@unform/core";
 import { FileInput } from "../../shared/components/Form/FileInput";
 
-import axios from "axios";
+import { useAuthentication } from "src/shared/hooks/useAuthentication";
+import { PlantRepository } from "src/repositories/list/PlantRepository";
+
+import fetcher from "../../services/axios/api";
+import toast from "react-hot-toast";
 
 type DataType = {
   popularName: string;
@@ -22,11 +26,12 @@ type DataType = {
   climate: string;
   gender: string;
   description: string;
-  plantImage: File;
+  plantImage?: File;
 };
 
 export function Insert() {
   const formRef = useRef<FormHandles>(null);
+  const { user } = useAuthentication();
 
   const handleSubmit = async (data: DataType, { reset }: any) => {
     try {
@@ -36,14 +41,23 @@ export function Insert() {
 
       const formData = new FormData();
 
-      formData.append("file", data.plantImage);
-      formData.append("upload_preset", "dud7id0c");
+      Object.entries(data).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
 
-      const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dtarkqzrh/image/upload",
-        formData
-      );
-      console.log(response.data);
+      toast.remove();
+
+      toast.loading(`Enviando informações ao servidor...`)
+
+      await fetcher.post("/plants", formData, {
+        headers: {
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+
+      toast.remove();
+
+      toast.success(`Planta '${data.popularName}' criada com sucesso!`);
 
       reset();
     } catch (error) {
@@ -57,6 +71,8 @@ export function Insert() {
       });
 
       formRef.current?.setErrors(validationErrors);
+
+      toast.error(`Revise os campos do formulário`);
     }
   };
 
@@ -64,10 +80,15 @@ export function Insert() {
     <div className="plant-page">
       <Sidebar page="insert" />
       <div className="screen">
-        <h2>Olá, administrador</h2>
+        <h2>Olá, {user?.username}</h2>
         <span>Você está na tela de inserção de plantas.</span>
 
-        <Form ref={formRef} onSubmit={handleSubmit} id="insertForm">
+        <Form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          id="insertForm"
+          encType="multipart/form-data"
+        >
           <div className="form-inputs">
             <div className="input-fields">
               <Input name="popularName" title="Nome popular" />
